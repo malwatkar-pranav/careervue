@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, Filter, ExternalLink, Building, MapPin, Users, Calendar } from 'lucide-react';
 import { indianCompanies, sectors } from '../../data/companies';
 import { Company } from '../../types';
+import { Pagination } from '../common/Pagination';
 
 export const CompanyDirectory: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedSector, setSelectedSector] = useState('All Sectors');
   const [showFilters, setShowFilters] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
 
   const filteredCompanies = indianCompanies.filter(company => {
     const matchesSearch = company.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -15,6 +18,23 @@ export const CompanyDirectory: React.FC = () => {
     
     return matchesSearch && matchesSector;
   });
+
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredCompanies.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentCompanies = filteredCompanies.slice(startIndex, endIndex);
+
+  // Reset to first page when search or filter changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, selectedSector]);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    // Scroll to top of the company list
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const handleVisitWebsite = (url: string) => {
     window.open(url, '_blank', 'noopener,noreferrer');
@@ -90,7 +110,7 @@ export const CompanyDirectory: React.FC = () => {
       {/* Results Summary */}
       <div className="flex items-center justify-between mb-6">
         <p className="text-gray-600">
-          Showing {filteredCompanies.length} of {indianCompanies.length} companies
+          Showing {startIndex + 1}-{Math.min(endIndex, filteredCompanies.length)} of {filteredCompanies.length} companies
         </p>
         <div className="flex items-center space-x-2">
           <Building className="h-5 w-5 text-gray-400" />
@@ -103,14 +123,14 @@ export const CompanyDirectory: React.FC = () => {
 
       {/* Company List */}
       <div className="space-y-4">
-        {filteredCompanies.map((company, index) => (
+        {currentCompanies.map((company, index) => (
           <div key={company.id} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200">
             <div className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
                 {/* Company Info */}
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">
-                    {index + 1}
+                    {startIndex + index + 1}
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 text-lg">{company.name}</h3>
@@ -189,6 +209,174 @@ export const CompanyDirectory: React.FC = () => {
           <Building className="h-12 w-12 text-gray-400 mx-auto mb-4" />
           <h3 className="text-lg font-medium text-gray-900 mb-2">No companies found</h3>
           <p className="text-gray-600">Try adjusting your search criteria or filters</p>
+        </div>
+      )}
+
+      {/* Pagination */}
+      {filteredCompanies.length > 0 && totalPages > 1 && (
+        <div className="mt-8">
+          {/* Results Summary and Page Navigation - All in One Line */}
+          <div className="bg-white rounded-lg shadow-md p-4">
+            <div className="flex items-center justify-between">
+              {/* Results Summary */}
+              <div className="text-sm text-gray-600">
+                Showing {startIndex + 1} to {Math.min(endIndex, filteredCompanies.length)} of {filteredCompanies.length} results
+              </div>
+
+              {/* Go to Page Section */}
+              <div className="flex items-center space-x-2">
+                <span className="text-sm text-gray-600">Go to page:</span>
+                <input
+                  type="number"
+                  min="1"
+                  max={totalPages}
+                  className="w-16 px-2 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Page"
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                      const page = parseInt((e.target as HTMLInputElement).value);
+                      if (page >= 1 && page <= totalPages) {
+                        handlePageChange(page);
+                        (e.target as HTMLInputElement).value = '';
+                      }
+                    }
+                  }}
+                />
+                <button
+                  onClick={() => {
+                    const input = document.querySelector('input[placeholder="Page"]') as HTMLInputElement;
+                    const page = parseInt(input.value);
+                    if (page >= 1 && page <= totalPages) {
+                      handlePageChange(page);
+                      input.value = '';
+                    }
+                  }}
+                  className="px-3 py-1 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                >
+                  Go
+                </button>
+              </div>
+
+              {/* Pagination Controls */}
+              <div className="flex items-center space-x-1">
+                {/* First Page Button */}
+                <button
+                  onClick={() => handlePageChange(1)}
+                  disabled={currentPage === 1}
+                  className={`p-1 text-sm font-medium rounded transition-colors ${
+                    currentPage === 1
+                      ? 'text-gray-400 cursor-not-allowed'
+                      : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                  }`}
+                  title="First Page"
+                >
+                  <span className="text-lg">«</span>
+                </button>
+
+                {/* Previous Button */}
+                <button
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className={`p-1 text-sm font-medium rounded transition-colors ${
+                    currentPage === 1
+                      ? 'text-gray-400 cursor-not-allowed'
+                      : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                  }`}
+                  title="Previous Page"
+                >
+                  <span className="text-lg">‹</span>
+                </button>
+
+                {/* Page Numbers */}
+                <div className="flex items-center space-x-1">
+                  {(() => {
+                    const pages = [];
+                    const maxVisiblePages = 5;
+                    
+                    if (totalPages <= maxVisiblePages) {
+                      for (let i = 1; i <= totalPages; i++) {
+                        pages.push(i);
+                      }
+                    } else {
+                      if (currentPage <= 3) {
+                        for (let i = 1; i <= 4; i++) {
+                          pages.push(i);
+                        }
+                        pages.push('...');
+                        pages.push(totalPages);
+                      } else if (currentPage >= totalPages - 2) {
+                        pages.push(1);
+                        pages.push('...');
+                        for (let i = totalPages - 3; i <= totalPages; i++) {
+                          pages.push(i);
+                        }
+                      } else {
+                        pages.push(1);
+                        pages.push('...');
+                        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+                          pages.push(i);
+                        }
+                        pages.push('...');
+                        pages.push(totalPages);
+                      }
+                    }
+                    
+                    return pages.map((page, index) => (
+                      <React.Fragment key={index}>
+                        {page === '...' ? (
+                          <span className="px-2 py-1 text-gray-400">...</span>
+                        ) : (
+                          <button
+                            onClick={() => handlePageChange(page as number)}
+                            className={`px-2 py-1 text-sm font-medium rounded transition-colors ${
+                              currentPage === page
+                                ? 'bg-blue-600 text-white'
+                                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                            }`}
+                          >
+                            {page}
+                          </button>
+                        )}
+                      </React.Fragment>
+                    ));
+                  })()}
+                </div>
+
+                {/* Next Button */}
+                <button
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className={`p-1 text-sm font-medium rounded transition-colors ${
+                    currentPage === totalPages
+                      ? 'text-gray-400 cursor-not-allowed'
+                      : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                  }`}
+                  title="Next Page"
+                >
+                  <span className="text-lg">›</span>
+                </button>
+
+                {/* Last Page Button */}
+                <button
+                  onClick={() => handlePageChange(totalPages)}
+                  disabled={currentPage === totalPages}
+                  className={`p-1 text-sm font-medium rounded transition-colors ${
+                    currentPage === totalPages
+                      ? 'text-gray-400 cursor-not-allowed'
+                      : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                  }`}
+                  title="Last Page"
+                >
+                  <span className="text-lg">»</span>
+                </button>
+              </div>
+
+              {/* Page Info */}
+              <div className="text-sm text-gray-600">
+                Page {currentPage} of {totalPages}
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>

@@ -105,9 +105,9 @@ const indianJobs = [
     },
     experience: {
       min: 0,
-      max: 1
+      max: 0
     },
-    description: 'Exciting internship opportunity at Flipkart to work with big data and analytics. Summer 2024 internship program now open. You will be part of the data science team analyzing customer behavior and market trends.',
+    description: 'Exciting internship opportunity at Flipkart to work with big data and analytics. You will be part of the data science team analyzing customer behavior and market trends.',
     requirements: [
       'Currently pursuing or recently completed degree in Statistics, Mathematics, or Computer Science',
       'Knowledge of Python, R, or SQL',
@@ -122,232 +122,83 @@ const indianJobs = [
       'Learning and development opportunities',
       'Potential for full-time conversion'
     ],
-    skills: ['Python', 'SQL', 'Statistics', 'Data Visualization', 'Excel'],
-    deadline: new Date('2024-05-30'),
+    skills: ['Python', 'R', 'SQL', 'Data Visualization', 'Statistics'],
+    deadline: new Date('2024-02-28'),
     category: 'Technology',
     employmentType: 'internship',
     isPremium: false
   },
   {
     title: 'Marketing Manager',
-    company: 'Hindustan Unilever Limited',
+    company: 'Creative Agency Inc.',
     type: 'private',
     location: {
       city: 'Mumbai',
       state: 'Maharashtra'
     },
     salary: {
-      min: 800000,
-      max: 1500000
+      min: 700000,
+      max: 1200000
     },
     experience: {
       min: 3,
-      max: 7
+      max: 5
     },
-    description: 'Lead marketing initiatives for HUL\'s consumer brands. Develop and execute marketing strategies to drive brand growth and consumer engagement across multiple channels.',
+    description: 'Lead marketing campaigns for high-profile clients in the creative industry. Develop and execute marketing strategies to increase brand awareness and drive sales.',
     requirements: [
-      'MBA in Marketing from premier institute',
-      '3-7 years of marketing experience in FMCG',
-      'Strong understanding of consumer behavior',
-      'Experience in digital marketing',
-      'Excellent communication and leadership skills'
+      'Bachelor\'s degree in Marketing, Business, or related field',
+      '3-5 years of experience in marketing',
+      'Experience with digital marketing tools',
+      'Strong analytical and creative skills',
+      'Excellent communication abilities'
     ],
     benefits: [
-      'Comprehensive health insurance',
-      'Performance-linked incentives',
-      'Stock options',
-      'Professional development programs',
-      'Work-life balance initiatives'
+      'Competitive salary package',
+      'Health and dental insurance',
+      'Performance-based bonuses',
+      'Professional development budget',
+      'Flexible work arrangements'
     ],
-    skills: ['Marketing Strategy', 'Digital Marketing', 'Brand Management', 'Analytics'],
-    deadline: new Date('2024-03-20'),
+    skills: ['Digital Marketing', 'Brand Management', 'Campaign Planning', 'Analytics'],
+    deadline: new Date('2024-03-15'),
     category: 'Marketing',
     employmentType: 'full-time',
-    isPremium: false
+    isPremium: true
   },
   {
     title: 'Bank Probationary Officer',
     company: 'State Bank of India',
-    type: 'government',
+    type: 'private',
     location: {
-      city: 'Chennai',
-      state: 'Tamil Nadu'
+      city: 'Mumbai',
+      state: 'Maharashtra'
     },
     salary: {
-      min: 270000,
-      max: 420000
+      min: 300000,
+      max: 500000
     },
     experience: {
       min: 0,
       max: 2
     },
-    description: 'Join SBI as a Probationary Officer and build a career in banking. You will be trained in various banking operations and have opportunities for career growth within the organization.',
+    description: 'Join SBI as a Probationary Officer and start your career in banking. This role offers excellent growth opportunities and job security in the banking sector.',
     requirements: [
-      'Bachelor\'s degree in any discipline',
-      'Age between 21-30 years',
-      'Clear SBI PO examination',
+      'Graduate degree from recognized university',
+      'Age between 20-30 years',
+      'Strong numerical and analytical skills',
       'Good communication skills',
-      'Basic computer knowledge'
+      'Willingness to work in any location'
     ],
     benefits: [
-      'Job security and stability',
-      'Medical benefits',
+      'Competitive salary with allowances',
+      'Medical insurance',
       'Pension scheme',
-      'Housing loan at subsidized rates',
+      'Leave travel concession',
       'Career advancement opportunities'
     ],
-    skills: ['Banking Operations', 'Customer Service', 'Financial Analysis', 'Communication'],
-    deadline: new Date('2024-03-10'),
+    skills: ['Banking', 'Customer Service', 'Financial Analysis', 'Risk Management'],
+    deadline: new Date('2024-05-30'),
     category: 'Banking',
-    employmentType: 'full-time',
-    isPremium: true,
-    applicationFee: 50
-  },
-  {
-    title: 'Software Development Intern',
-    company: 'Infosys',
-    type: 'private',
-    location: {
-      city: 'Pune',
-      state: 'Maharashtra'
-    },
-    salary: {
-      min: 20000,
-      max: 35000
-    },
-    experience: {
-      min: 0,
-      max: 0
-    },
-    description: 'Kickstart your career with Infosys internship program. Work on real projects, learn from industry experts, and get hands-on experience with latest technologies.',
-    requirements: [
-      'BE/BTech in Computer Science or related field',
-      'Strong programming fundamentals',
-      'Knowledge of Java, Python, or C++',
-      'Good problem-solving skills',
-      'Eagerness to learn new technologies'
-    ],
-    benefits: [
-      'Monthly stipend',
-      'Training and certification',
-      'Mentorship program',
-      'Networking opportunities',
-      'Potential for full-time offer'
-    ],
-    skills: ['Java', 'Python', 'Programming', 'Problem Solving'],
-    deadline: new Date('2024-02-25'),
-    category: 'Technology',
-    employmentType: 'internship',
-    isPremium: false
-  },
-  {
-    title: 'Financial Analyst',
-    company: 'ICICI Bank',
-    type: 'private',
-    location: {
-      city: 'Mumbai',
-      state: 'Maharashtra'
-    },
-    salary: {
-      min: 500000,
-      max: 900000
-    },
-    experience: {
-      min: 2,
-      max: 5
-    },
-    description: 'Analyze financial data, prepare reports, and support investment decisions at ICICI Bank. Work with cross-functional teams to drive business growth and profitability.',
-    requirements: [
-      'CA/CFA/MBA in Finance',
-      '2-5 years of experience in financial analysis',
-      'Strong knowledge of financial modeling',
-      'Proficiency in Excel and financial software',
-      'Excellent analytical and communication skills'
-    ],
-    benefits: [
-      'Competitive salary and bonuses',
-      'Health and life insurance',
-      'Retirement benefits',
-      'Professional development',
-      'Employee banking benefits'
-    ],
-    skills: ['Financial Analysis', 'Excel', 'Financial Modeling', 'Risk Assessment'],
-    deadline: new Date('2024-03-25'),
-    category: 'Finance',
-    employmentType: 'full-time',
-    isPremium: false
-  },
-  {
-    title: 'Teaching Assistant',
-    company: 'Indian Institute of Technology Delhi',
-    type: 'government',
-    location: {
-      city: 'New Delhi',
-      state: 'Delhi'
-    },
-    salary: {
-      min: 31000,
-      max: 35000
-    },
-    experience: {
-      min: 0,
-      max: 2
-    },
-    description: 'Support faculty in teaching and research activities at IIT Delhi. Assist in conducting classes, grading assignments, and mentoring undergraduate students.',
-    requirements: [
-      'MTech/PhD in relevant engineering discipline',
-      'Strong academic record',
-      'Good communication skills',
-      'Research experience preferred',
-      'Passion for teaching'
-    ],
-    benefits: [
-      'Academic environment',
-      'Research opportunities',
-      'Medical facilities',
-      'Library access',
-      'Professional development'
-    ],
-    skills: ['Teaching', 'Research', 'Communication', 'Subject Expertise'],
-    deadline: new Date('2024-04-15'),
-    category: 'Education',
-    employmentType: 'part-time',
-    isPremium: false
-  },
-  {
-    title: 'Graduate Trainee Program',
-    company: 'Hindustan Unilever Limited',
-    type: 'private',
-    location: {
-      city: 'Mumbai',
-      state: 'Maharashtra'
-    },
-    salary: {
-      min: 600000,
-      max: 900000
-    },
-    experience: {
-      min: 0,
-      max: 1
-    },
-    description: 'HUL Graduate Trainee Program 2024 - Future Leaders Program. Applications open for fresh graduates. Comprehensive training program with rotations across different business functions.',
-    requirements: [
-      'MBA from premier institute or Bachelor\'s degree with excellent academic record',
-      'Fresh graduate or maximum 1 year experience',
-      'Strong leadership potential',
-      'Excellent communication skills',
-      'Passion for FMCG industry'
-    ],
-    benefits: [
-      'Comprehensive training program',
-      'Mentorship from senior leaders',
-      'Fast-track career progression',
-      'Health and wellness benefits',
-      'Performance-linked incentives'
-    ],
-    skills: ['Leadership', 'Communication', 'Business Analysis', 'Strategic Thinking'],
-    deadline: new Date('2024-07-15'),
-    category: 'Marketing',
     employmentType: 'full-time',
     isPremium: false
   },
@@ -360,36 +211,275 @@ const indianJobs = [
       state: 'Telangana'
     },
     salary: {
-      min: 50000,
-      max: 75000
+      min: 35000,
+      max: 50000
     },
     experience: {
       min: 0,
       max: 0
     },
-    description: 'Microsoft Summer Internship Program 2024. Work on real products used by millions of users worldwide. Mentorship from experienced engineers and exposure to cutting-edge technologies.',
+    description: 'Join Microsoft India for an exciting summer internship. Work on real projects, learn from industry experts, and contribute to cutting-edge technology solutions.',
     requirements: [
-      'Currently pursuing Bachelor\'s or Master\'s in Computer Science',
-      'Strong programming skills in C#, Java, or Python',
-      'Understanding of data structures and algorithms',
-      'Previous internship or project experience preferred',
-      'Excellent problem-solving abilities'
+      'Currently pursuing Computer Science or related degree',
+      'Strong programming fundamentals',
+      'Knowledge of at least one programming language',
+      'Good problem-solving skills',
+      'Team player with good communication'
     ],
     benefits: [
       'Competitive stipend',
-      'Housing assistance',
-      'Mentorship program',
-      'Access to Microsoft technologies',
+      'Mentorship from senior developers',
+      'Real project experience',
       'Networking opportunities',
       'Potential for full-time offer'
     ],
-    skills: ['C#', 'Java', 'Python', 'Data Structures', 'Algorithms'],
-    deadline: new Date('2024-04-30'),
+    skills: ['Programming', 'Problem Solving', 'Teamwork', 'Communication'],
+    deadline: new Date('2024-03-01'),
     category: 'Technology',
     employmentType: 'internship',
+    isPremium: true
+  },
+  {
+    title: 'Financial Analyst',
+    company: 'HDFC Bank',
+    type: 'private',
+    location: {
+      city: 'Mumbai',
+      state: 'Maharashtra'
+    },
+    salary: {
+      min: 500000,
+      max: 800000
+    },
+    experience: {
+      min: 2,
+      max: 4
+    },
+    description: 'Join HDFC Bank as a Financial Analyst and work on financial modeling, risk assessment, and investment analysis for the bank\'s portfolio.',
+    requirements: [
+      'CA/CFA/MBA Finance or related qualification',
+      '2-4 years of experience in financial analysis',
+      'Strong analytical and modeling skills',
+      'Knowledge of financial markets',
+      'Excellent Excel and presentation skills'
+    ],
+    benefits: [
+      'Competitive salary package',
+      'Health and life insurance',
+      'Performance bonuses',
+      'Learning and development',
+      'Career growth opportunities'
+    ],
+    skills: ['Financial Modeling', 'Risk Analysis', 'Excel', 'Financial Markets'],
+    deadline: new Date('2024-04-15'),
+    category: 'Finance',
+    employmentType: 'full-time',
     isPremium: false
+  },
+  {
+    title: 'Teaching Assistant',
+    company: 'Delhi University',
+    type: 'private',
+    location: {
+      city: 'New Delhi',
+      state: 'Delhi'
+    },
+    salary: {
+      min: 200000,
+      max: 350000
+    },
+    experience: {
+      min: 0,
+      max: 2
+    },
+    description: 'Join Delhi University as a Teaching Assistant and contribute to academic excellence. Support faculty members in teaching and research activities.',
+    requirements: [
+      'Master\'s degree in relevant subject',
+      'Strong academic background',
+      'Good communication skills',
+      'Passion for teaching',
+      'Research aptitude'
+    ],
+    benefits: [
+      'Academic environment',
+      'Research opportunities',
+      'Professional development',
+      'Flexible schedule',
+      'Academic growth'
+    ],
+    skills: ['Teaching', 'Research', 'Communication', 'Subject Expertise'],
+    deadline: new Date('2024-03-30'),
+    category: 'Education',
+    employmentType: 'part-time',
+    isPremium: false
+  },
+  {
+    title: 'Graduate Trainee Program',
+    company: 'Larsen & Toubro',
+    type: 'private',
+    location: {
+      city: 'Mumbai',
+      state: 'Maharashtra'
+    },
+    salary: {
+      min: 300000,
+      max: 450000
+    },
+    experience: {
+      min: 0,
+      max: 0
+    },
+    description: 'Join L&T\'s prestigious Graduate Trainee Program and kickstart your career in engineering. Get exposure to various engineering domains and projects.',
+    requirements: [
+      'B.Tech/B.E. in Mechanical, Civil, Electrical, or related field',
+      'Strong academic record',
+      'Good communication skills',
+      'Team player attitude',
+      'Willingness to learn and adapt'
+    ],
+    benefits: [
+      'Comprehensive training program',
+      'Mentorship from experts',
+      'Project exposure',
+      'Competitive salary',
+      'Career growth path'
+    ],
+    skills: ['Engineering', 'Problem Solving', 'Teamwork', 'Learning'],
+    deadline: new Date('2024-05-15'),
+    category: 'Engineering',
+    employmentType: 'full-time',
+    isPremium: false
+  },
+  {
+    title: 'Software Development Intern - Summer 2024',
+    company: 'Google India',
+    type: 'private',
+    location: {
+      city: 'Bangalore',
+      state: 'Karnataka'
+    },
+    salary: {
+      min: 40000,
+      max: 60000
+    },
+    experience: {
+      min: 0,
+      max: 0
+    },
+    description: 'Join Google India for an exciting summer internship. Work on innovative projects, learn from world-class engineers, and contribute to products used by billions.',
+    requirements: [
+      'Currently pursuing Computer Science or related degree',
+      'Strong programming fundamentals',
+      'Knowledge of algorithms and data structures',
+      'Good problem-solving skills',
+      'Passion for technology'
+    ],
+    benefits: [
+      'Competitive stipend',
+      'World-class mentorship',
+      'Real project experience',
+      'Networking opportunities',
+      'Potential for full-time offer'
+    ],
+    skills: ['Programming', 'Algorithms', 'Problem Solving', 'Innovation'],
+    deadline: new Date('2024-02-15'),
+    category: 'Technology',
+    employmentType: 'internship',
+    isPremium: true
   }
 ];
+
+// Generate additional jobs to reach 600+ total
+const generateAdditionalJobs = () => {
+  const additionalJobs = [];
+  const companies = [
+    'Infosys', 'Wipro', 'HCL Technologies', 'Tech Mahindra', 'Cognizant',
+    'Accenture', 'IBM India', 'Oracle India', 'SAP India', 'Salesforce India',
+    'Amazon India', 'Netflix India', 'Uber India', 'Ola', 'Zomato',
+    'Swiggy', 'Paytm', 'PhonePe', 'Razorpay', 'CRED',
+    'BYJU\'s', 'Unacademy', 'Vedantu', 'WhiteHat Jr', 'Coding Ninjas',
+    'HDFC Bank', 'ICICI Bank', 'Axis Bank', 'Kotak Mahindra Bank', 'Yes Bank',
+    'Reliance Industries', 'Tata Group', 'Mahindra Group', 'Godrej Group', 'Adani Group'
+  ];
+  
+  const cities = [
+    'Bangalore', 'Mumbai', 'Delhi', 'Hyderabad', 'Chennai',
+    'Pune', 'Kolkata', 'Ahmedabad', 'Jaipur', 'Lucknow',
+    'Chandigarh', 'Indore', 'Bhopal', 'Nagpur', 'Vadodara'
+  ];
+  
+  const states = [
+    'Karnataka', 'Maharashtra', 'Delhi', 'Telangana', 'Tamil Nadu',
+    'Uttar Pradesh', 'Gujarat', 'Rajasthan', 'Madhya Pradesh', 'West Bengal'
+  ];
+  
+  const categories = [
+    'Technology', 'Finance', 'Healthcare', 'Education', 'Marketing',
+    'Sales', 'Engineering', 'Design', 'Operations', 'HR',
+    'Legal', 'Consulting', 'Banking', 'Government', 'Other'
+  ];
+  
+  const employmentTypes = ['full-time', 'part-time', 'contract', 'internship'];
+  
+  for (let i = 0; i < 600; i++) {
+    const company = companies[Math.floor(Math.random() * companies.length)];
+    const city = cities[Math.floor(Math.random() * cities.length)];
+    const state = states[Math.floor(Math.random() * states.length)];
+    const category = categories[Math.floor(Math.random() * categories.length)];
+    const employmentType = employmentTypes[Math.floor(Math.random() * employmentTypes.length)];
+    
+    const minSalary = Math.floor(Math.random() * 500000) + 200000;
+    const maxSalary = minSalary + Math.floor(Math.random() * 800000);
+    
+    const minExp = Math.floor(Math.random() * 5);
+    const maxExp = minExp + Math.floor(Math.random() * 5);
+    
+    const job = {
+      title: `${category} ${employmentType === 'internship' ? 'Intern' : 'Professional'} - ${Math.floor(Math.random() * 1000) + 1}`,
+      company: company,
+      type: 'private',
+      location: {
+        city: city,
+        state: state
+      },
+      salary: {
+        min: minSalary,
+        max: maxSalary
+      },
+      experience: {
+        min: minExp,
+        max: maxExp
+      },
+      description: `Join ${company} as a ${category} professional. This is an exciting opportunity to work on innovative projects and grow your career.`,
+      requirements: [
+        'Relevant degree or certification',
+        'Good communication skills',
+        'Team player attitude',
+        'Willingness to learn',
+        'Problem-solving abilities'
+      ],
+      benefits: [
+        'Competitive salary',
+        'Health insurance',
+        'Professional development',
+        'Work-life balance',
+        'Career growth opportunities'
+      ],
+      skills: [category, 'Communication', 'Teamwork', 'Problem Solving'],
+      deadline: new Date(Date.now() + Math.random() * 90 * 24 * 60 * 60 * 1000),
+      category: category,
+      employmentType: employmentType,
+      isPremium: Math.random() > 0.7
+    };
+    
+    additionalJobs.push(job);
+  }
+  
+  return additionalJobs;
+};
+
+// Combine original jobs with generated jobs
+const allJobs = [...indianJobs, ...generateAdditionalJobs()];
 
 const seedJobs = async () => {
   try {
@@ -418,7 +508,7 @@ const seedJobs = async () => {
     const futureDate = new Date();
     futureDate.setMonth(futureDate.getMonth() + 3); // Set deadline 3 months in the future
     
-    const jobsWithUser = indianJobs.map(job => ({
+    const jobsWithUser = allJobs.map(job => ({
       ...job,
       postedBy: defaultUser._id,
       deadline: futureDate

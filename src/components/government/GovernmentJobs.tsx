@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Search, Filter, ExternalLink, Building, MapPin, Users, Calendar, DollarSign, Clock, FileText } from 'lucide-react';
 import { governmentJobs, governmentCategories, GovernmentJob } from '../../data/governmentJobs';
+import { Pagination } from '../common/Pagination';
 
 export const GovernmentJobs: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
   const [showFilters, setShowFilters] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   const filteredJobs = governmentJobs.filter(job => {
     const matchesSearch = job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -15,6 +18,22 @@ export const GovernmentJobs: React.FC = () => {
     
     return matchesSearch && matchesCategory;
   });
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredJobs.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentJobs = filteredJobs.slice(startIndex, endIndex);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Reset to first page when filters change
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, selectedCategory]);
 
   const handleVisitWebsite = (url: string) => {
     window.open(url, '_blank', 'noopener,noreferrer');
@@ -123,7 +142,7 @@ export const GovernmentJobs: React.FC = () => {
       {/* Results Summary */}
       <div className="flex items-center justify-between mb-6">
         <p className="text-gray-600">
-          Showing {filteredJobs.length} of {governmentJobs.length} government jobs
+          Showing {startIndex + 1} to {Math.min(endIndex, filteredJobs.length)} of {filteredJobs.length} government jobs
         </p>
         <div className="flex items-center space-x-2">
           <Building className="h-5 w-5 text-gray-400" />
@@ -136,14 +155,14 @@ export const GovernmentJobs: React.FC = () => {
 
       {/* Government Jobs List */}
       <div className="space-y-4">
-        {filteredJobs.map((job, index) => (
+        {currentJobs.map((job, index) => (
           <div key={job.id} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200">
             <div className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
                 {/* Job Info */}
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">
-                    {index + 1}
+                    {startIndex + index + 1}
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 text-lg mb-1">{job.title}</h3>
@@ -260,6 +279,174 @@ export const GovernmentJobs: React.FC = () => {
           </div>
         ))}
       </div>
+
+      {/* Pagination */}
+      {filteredJobs.length > 0 && totalPages > 1 && (
+        <div className="mt-8">
+          {/* Results Summary and Page Navigation - All in One Line */}
+          <div className="bg-white rounded-lg shadow-md p-4">
+            <div className="flex items-center justify-between">
+              {/* Results Summary */}
+              <div className="text-sm text-gray-600">
+                Showing {startIndex + 1} to {Math.min(endIndex, filteredJobs.length)} of {filteredJobs.length} results
+              </div>
+
+              {/* Go to Page Section */}
+              <div className="flex items-center space-x-2">
+                <span className="text-sm text-gray-600">Go to page:</span>
+                <input
+                  type="number"
+                  min="1"
+                  max={totalPages}
+                  className="w-16 px-2 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Page"
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                      const page = parseInt((e.target as HTMLInputElement).value);
+                      if (page >= 1 && page <= totalPages) {
+                        handlePageChange(page);
+                        (e.target as HTMLInputElement).value = '';
+                      }
+                    }
+                  }}
+                />
+                <button
+                  onClick={() => {
+                    const input = document.querySelector('input[placeholder="Page"]') as HTMLInputElement;
+                    const page = parseInt(input.value);
+                    if (page >= 1 && page <= totalPages) {
+                      handlePageChange(page);
+                      input.value = '';
+                    }
+                  }}
+                  className="px-3 py-1 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                >
+                  Go
+                </button>
+              </div>
+
+              {/* Pagination Controls */}
+              <div className="flex items-center space-x-1">
+                {/* First Page Button */}
+                <button
+                  onClick={() => handlePageChange(1)}
+                  disabled={currentPage === 1}
+                  className={`p-1 text-sm font-medium rounded transition-colors ${
+                    currentPage === 1
+                      ? 'text-gray-400 cursor-not-allowed'
+                      : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                  }`}
+                  title="First Page"
+                >
+                  <span className="text-lg">«</span>
+                </button>
+
+                {/* Previous Button */}
+                <button
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className={`p-1 text-sm font-medium rounded transition-colors ${
+                    currentPage === 1
+                      ? 'text-gray-400 cursor-not-allowed'
+                      : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                  }`}
+                  title="Previous Page"
+                >
+                  <span className="text-lg">‹</span>
+                </button>
+
+                {/* Page Numbers */}
+                <div className="flex items-center space-x-1">
+                  {(() => {
+                    const pages = [];
+                    const maxVisiblePages = 5;
+                    
+                    if (totalPages <= maxVisiblePages) {
+                      for (let i = 1; i <= totalPages; i++) {
+                        pages.push(i);
+                      }
+                    } else {
+                      if (currentPage <= 3) {
+                        for (let i = 1; i <= 4; i++) {
+                          pages.push(i);
+                        }
+                        pages.push('...');
+                        pages.push(totalPages);
+                      } else if (currentPage >= totalPages - 2) {
+                        pages.push(1);
+                        pages.push('...');
+                        for (let i = totalPages - 3; i <= totalPages; i++) {
+                          pages.push(i);
+                        }
+                      } else {
+                        pages.push(1);
+                        pages.push('...');
+                        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+                          pages.push(i);
+                        }
+                        pages.push('...');
+                        pages.push(totalPages);
+                      }
+                    }
+                    
+                    return pages.map((page, index) => (
+                      <React.Fragment key={index}>
+                        {page === '...' ? (
+                          <span className="px-2 py-1 text-gray-400">...</span>
+                        ) : (
+                          <button
+                            onClick={() => handlePageChange(page as number)}
+                            className={`px-2 py-1 text-sm font-medium rounded transition-colors ${
+                              currentPage === page
+                                ? 'bg-blue-600 text-white'
+                                : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                            }`}
+                          >
+                            {page}
+                          </button>
+                        )}
+                      </React.Fragment>
+                    ));
+                  })()}
+                </div>
+
+                {/* Next Button */}
+                <button
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className={`p-1 text-sm font-medium rounded transition-colors ${
+                    currentPage === totalPages
+                      ? 'text-gray-400 cursor-not-allowed'
+                      : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                  }`}
+                  title="Next Page"
+                >
+                  <span className="text-lg">›</span>
+                </button>
+
+                {/* Last Page Button */}
+                <button
+                  onClick={() => handlePageChange(totalPages)}
+                  disabled={currentPage === totalPages}
+                  className={`p-1 text-sm font-medium rounded transition-colors ${
+                    currentPage === totalPages
+                      ? 'text-gray-400 cursor-not-allowed'
+                      : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                  }`}
+                  title="Last Page"
+                >
+                  <span className="text-lg">»</span>
+                </button>
+              </div>
+
+              {/* Page Info */}
+              <div className="text-sm text-gray-600">
+                Page {currentPage} of {totalPages}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {filteredJobs.length === 0 && (
         <div className="text-center py-12">

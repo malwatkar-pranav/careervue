@@ -1,3 +1,2 @@
 start both : npm start
 node index.js -specific frontend and backend
-code:claude ai,v0 dev,cline ai

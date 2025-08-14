@@ -34,7 +34,7 @@ const limiter = rateLimit({
 app.use('/api/', limiter);
 
 // MongoDB connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/careervue', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

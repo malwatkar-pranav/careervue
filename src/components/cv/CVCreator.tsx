@@ -9,6 +9,7 @@ import { CVEducation } from './components/CVEducation';
 import { CVSkills } from './components/CVSkills';
 import { CVAchievements } from './components/CVAchievements';
 import { AIAssistant } from './components/AIAssistant';
+import { useChatbot } from '../../contexts/ChatbotContext';
 
 export interface CVData {
   personalInfo: {
@@ -123,6 +124,7 @@ const defaultCVData: CVData = {
 };
 
 export const CVCreator: React.FC = () => {
+  const { openChatbot } = useChatbot();
   const [cvData, setCVData] = useState<CVData>(defaultCVData);
   const [isPreviewMode, setIsPreviewMode] = useState(false);
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);

@@ -40,6 +40,8 @@ const AnimatedCounter: React.FC<{ end: number; duration?: number; suffix?: strin
 };
 
 export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
+  // const { openChatbot } = useChatbot(); // Removed as per edit hint
+
   return (
     <div className="bg-white">
       {/* Hero Section */}

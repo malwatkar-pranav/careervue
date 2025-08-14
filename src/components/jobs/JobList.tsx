@@ -4,6 +4,7 @@ import { jobsAPI } from '../../services/api';
 import { Job } from '../../types';
 import { Pagination } from '../common/Pagination';
 import { mockJobs } from '../../data/mockJobs';
+import { useChatbot } from '../../contexts/ChatbotContext';
 
 interface JobListProps {
   onViewDetails: (jobId: string) => void;
@@ -85,6 +86,7 @@ const generateAdditionalPrivateJobs = (): Job[] => {
 };
 
 export const JobList: React.FC<JobListProps> = ({ onViewDetails }) => {
+  const { openChatbot } = useChatbot();
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');

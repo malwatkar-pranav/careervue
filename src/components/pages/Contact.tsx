@@ -212,27 +212,6 @@ export const Contact: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Live Chat Section */}
-      <div className="bg-gray-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-white rounded-lg shadow-md p-8 max-w-2xl mx-auto">
-            <div className="flex justify-center mb-4">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-                <MessageCircle className="h-8 w-8 text-blue-600" />
-              </div>
-            </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Need Immediate Help?</h2>
-            <p className="text-gray-600 mb-6">
-              Our customer support team is available to help you with any questions or concerns. 
-              Start a live chat for instant assistance.
-            </p>
-            <button className="bg-blue-600 text-white px-6 py-3 rounded-md font-medium hover:bg-blue-700 transition-colors">
-              Start Live Chat
-            </button>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

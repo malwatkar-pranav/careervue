@@ -114,7 +114,8 @@ router.post("/forgot-password", async (req, res) => {
     await user.save();
 
     // Create reset link - point to frontend
-    const resetLink = `${process.env.CLIENT_URL || 'http://localhost:5173'}/reset-password?token=${resetToken}`;
+    // const resetLink = `${process.env.CLIENT_URL || 'http://localhost:5173'}/reset-password?token=${resetToken}`;
+    const resetLink = `${process.env.CLIENT_URL || '${inport.meta.env.VITE_REACT_APP_BACKEND_BASEURL}'}/reset-password?token=${resetToken}`;
 
     // Send password reset email
     try {

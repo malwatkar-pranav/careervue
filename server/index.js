@@ -15,13 +15,13 @@ import adminRoutes from './routes/admin.js';
 dotenv.config();
 
 const app = express();
-app.use(cors(
-  (
-    origin:{"https://deploy-mern-lwhq.vercel.app"},
-            methods:{"POST","GET"},
-            credentials:true
-            )
-    ));
+// app.use(cors(
+//   (
+//     origin:{"https://deploy-mern-lwhq.vercel.app"},
+//             methods:{"POST","GET"},
+//             credentials:true
+//             )
+//     ));
 const PORT = process.env.PORT || 5000;
 
 // Middleware

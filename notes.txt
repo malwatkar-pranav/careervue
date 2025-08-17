@@ -1,4 +1,2 @@
+start both : npm start
 node index.js -specific frontend and backend
-client:npm run dev
-server:npm run dev
-

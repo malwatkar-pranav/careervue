@@ -61,20 +61,20 @@ export const AssistantWidget: React.FC = () => {
 
 	// Load chat history when user logs in or component mounts
 	useEffect(() => {
-		if (isAuthenticated && user?.id) {
-			const savedHistory = loadChatHistory(user.id);
+		if (isAuthenticated && user?._id) {
+			const savedHistory = loadChatHistory(user._id);
 			if (savedHistory.length > 0) {
 				setMessages(savedHistory);
 			}
 		}
-	}, [isAuthenticated, user?.id]);
+	}, [isAuthenticated, user?._id]);
 
 	// Save chat history whenever messages change (for logged-in users)
 	useEffect(() => {
-		if (isAuthenticated && user?.id && messages.length > 0) {
-			saveChatHistory(user.id, messages);
+		if (isAuthenticated && user?._id && messages.length > 0) {
+			saveChatHistory(user._id, messages);
 		}
-	}, [messages, isAuthenticated, user?.id]);
+	}, [messages, isAuthenticated, user?._id]);
 
 	// Initialize welcome message when chatbot opens
 	useEffect(() => {
@@ -260,8 +260,8 @@ export const AssistantWidget: React.FC = () => {
 	};
 
 	const handleClearHistory = () => {
-		if (isAuthenticated && user?.id) {
-			clearChatHistory(user.id);
+		if (isAuthenticated && user?._id) {
+			clearChatHistory(user._id);
 		}
 		setMessages([]);
 		setInput('');

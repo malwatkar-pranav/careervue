@@ -17,9 +17,8 @@ import { CompanyDirectory } from './components/companies/CompanyDirectory';
 import { GovernmentJobs } from './components/government/GovernmentJobs';
 import { CVCreator } from './components/cv/CVCreator';
 import AssistantWidget from './components/common/AssistantWidget';
-import { AdminApp } from './components/admin/AdminApp';
 
-type Page = 'home' | 'jobs' | 'companies' | 'government' | 'cv-creator' | 'about' | 'contact' | 'login' | 'register' | 'forgot-password' | 'reset-password' | 'dashboard' | 'job-details' | 'admin';
+type Page = 'home' | 'jobs' | 'companies' | 'government' | 'cv-creator' | 'about' | 'contact' | 'login' | 'register' | 'forgot-password' | 'reset-password' | 'dashboard' | 'job-details';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -84,8 +83,6 @@ function App() {
         return <ResetPassword onNavigate={handleNavigate} />;
       case 'dashboard':
         return <Dashboard onNavigate={handleNavigate} />;
-      case 'admin':
-        return <AdminApp />;
       default:
         return <JobList onViewDetails={handleViewJobDetails} />;
     }
@@ -94,18 +91,14 @@ function App() {
   return (
     <AuthProvider>
       <ChatbotProvider>
-        {currentPage === 'admin' ? (
-          renderPage()
-        ) : (
-          <div className="min-h-screen flex flex-col">
-            <Header onNavigate={handleNavigate} currentPage={currentPage} />
-            <main className="flex-grow">
-              {renderPage()}
-            </main>
-            <Footer />
-            <AssistantWidget />
-          </div>
-        )}
+        <div className="min-h-screen flex flex-col">
+          <Header onNavigate={handleNavigate} currentPage={currentPage} />
+          <main className="flex-grow">
+            {renderPage()}
+          </main>
+          <Footer />
+          <AssistantWidget />
+        </div>
       </ChatbotProvider>
     </AuthProvider>
   );

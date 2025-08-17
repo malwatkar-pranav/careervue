@@ -39,11 +39,11 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
             className="flex items-center space-x-2 cursor-pointer"
             onClick={() => onNavigate("home")}
           >
-            {/* <img src="/logo.png" alt="Careervue Logo" className="h-8 w-8" /> */}
-            <img
+            <img src="logo.png" alt="Careervue Logo" className="h-8 w-8" />
+            {/* <img
               src="logo.png"
               className="h-8 w-8 transition-transform duration-200 hover:scale-125"
-            />
+            /> */}
             <span className="text-2xl font-bold text-gray-900">Careervue</span>
           </div>
 

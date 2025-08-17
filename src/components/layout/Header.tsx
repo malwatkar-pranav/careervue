@@ -41,7 +41,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPage }) => {
           >
             {/* <img src="/logo.png" alt="Careervue Logo" className="h-8 w-8" /> */}
             <img
-              src="../../../public/logo.png"
+              src="logo.png"
               className="h-8 w-8 transition-transform duration-200 hover:scale-125"
             />
             <span className="text-2xl font-bold text-gray-900">Careervue</span>

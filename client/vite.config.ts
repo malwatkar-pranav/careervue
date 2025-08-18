@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: process.env.VITE_APP_API_URL || 'http://localhost:5000',
+        target: process.env.VITE_APP_API_URL || 'http://localhost:5000' || 'https://careervue.onrender.com',
         changeOrigin: true,
         secure: false,
       },

@@ -114,7 +114,7 @@ router.post("/forgot-password", async (req, res) => {
     await user.save();
 
     // Create reset link - point to frontend
-    const resetLink = `${process.env.VITE.CLIENT_URL || 'http://localhost:5173'}/reset-password?token=${resetToken}`;
+    const resetLink = `${process.env.VITE.CLIENT_URL || 'httpS://localhost:5173' || 'https://careervue.onrender.com'}/reset-password?token=${resetToken}`;
 
     // Send password reset email
     try {

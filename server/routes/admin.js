@@ -1,12 +1,10 @@
-const express = require('express');
+import express from 'express';
 
-const router = express.Router();
+export const adminRoutes = express.Router();
 
 // Example admin route
-router.get('/', (req, res) => {
+adminRoutes.get('/', (req, res) => {
     res.send('Admin dashboard');
 });
 
 // Add more admin routes here
-
-module.exports = router;

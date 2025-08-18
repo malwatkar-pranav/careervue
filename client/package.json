@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "npx vite --version",
     "build": " vite build",
     "preview": "vite preview"
   },

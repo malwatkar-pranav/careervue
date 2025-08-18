@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
 import morgan from 'morgan';
-
+import adminRoutes from './routes/admin.js';
 import authRoutes from './routes/routeAuth.js';
 import jobRoutes from './routes/jobs.js';
 import applicationRoutes from './routes/applications.js';
